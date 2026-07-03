@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="utf-8"><title>連携コード受け取りページ</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:60px auto;padding:0 20px}code{background:#f0f0f0;padding:12px;display:block;word-break:break-all;font-size:18px;border-radius:8px}</style>
+</head>
+<body>
+<h1>アカウント連携コード</h1>
+<p>下のコードをコピーして、Claudeのチャットに貼り付けてください。</p>
+<code id="code">（コードが見つかりません。URLに ?code= が付いているか確認してください）</code>
+<p><button id="copy" style="font-size:16px;padding:10px 20px">コードをコピー</button></p>
+<script>
+const p = new URLSearchParams(location.search);
+const c = p.get("code");
+if (c) document.getElementById("code").textContent = c;
+document.getElementById("copy").onclick = () => {
+  if (c) { navigator.clipboard.writeText(c); document.getElementById("copy").textContent = "コピーしました"; }
+};
+</script>
+</body>
+</html>
